@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide Down Close</title>
+    <style>
+        *{
+            font-weight: bold;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #button {
+            width: 250px;
+            height: 60px;
+            background-color: white;
+            text-align: center;
+            border: 3px solid black;
+            line-height: 60px;
+            color: black;
+            margin-top: 20px;
+            position: fixed;
+            font-size: 25px;
+            font-weight: bold;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            bottom: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        #button:hover {
+            background-color: black;
+            border: 3px solid black;
+            color: white;
+        }
+
+        #loadCont {
+            /* border: 3px solid lightskyblue; */
+            width: 250px;
+            height: 15px;
+            display: none;
+            border-radius: 20px;
+            overflow: hidden;
+            position: fixed;
+            bottom: 50%;
+            left: 50%;
+            background-color: #8e93ab;
+            transform: translate(-50%, -50%);
+        }
+
+        #loadEff {
+            width: 0%;
+            height: 100%;
+            background-color: #2653ff;
+            /* transition: 5s; */
+        }
+        #openFile{
+            font-size: 25px;
+            /* display: flex; */
+            display: inline-block;
+            /* border: 1px solid blue; */
+            text-align: center;
+            position: relative;
+            width: 150px;
+            overflow: hidden;
+            height: 0px;
+            /* display: none; */
+            position: fixed;
+            bottom: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            
+        }
+        #underLine{
+            width: 150px;
+            border: 3px solid black;
+            border-radius: 20px;
+            position: absolute;
+            bottom: 1px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="button">Download</div>
+    <div id="loadCont">
+        <div id="loadEff"></div>
+    </div>
+    <div id="openFile">
+        <p>Open File</p>
+        <div id="underLine"><div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $("#loadCont").hide();
+        $("#button").on({
+            click: function () {
+                $(this).animate({
+                    height: "5px"
+                }, 600,function(){
+                    $("#button").hide();
+                    $("#loadCont").show();
+                    $("#loadEff").animate({
+                    width: "100%"
+                }, 5000,
+                function(){
+                    $("#loadCont").hide();
+ 
+                    $("#openFile").animate({
+                        height:"70px"
+                    },2000)
+
+                    // css("height","auto");
+                    
+                } );
+        });
+             
+            },
+        } );    
+    </script>
+</body>
+
+</html>
